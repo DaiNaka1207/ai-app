@@ -14,6 +14,7 @@
         textarea {margin-right: 10px; padding: 5px 10px; width: 200px; height: 100px;}
         button {padding: 5px 10px;height: 30px;}
         p {margin: 5px 0 0 10px;}
+        .l-command, .l-content {margin: 20px 0 50px 10px;}
     </style>
 </head>
 <body>
@@ -21,14 +22,22 @@
     
     <form action="{{route('entry')}}" method="post">
         @csrf
-        <textarea name="toGeminiText" autofocus>@isset($result['task']){{$result['task']}}@endisset</textarea>
+        <textarea name="toGeminiText" autofocus>@isset($result['text']){{$result['text']}}@endisset</textarea>
         <button type="submit">send</button>
     </form>
     
     <hr>
 
     @isset($result)
-    <p>{!!$result['content']!!}</p>
+        <div class="l-command">
+            <p>{!!$result['command']!!}</p>
+        </div>
+
+        <hr>
+        
+        <div class="l-content">
+            {!!$result['content']!!}
+        </div>
     @endisset
 </body>
 </html>

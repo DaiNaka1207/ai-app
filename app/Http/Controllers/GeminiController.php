@@ -16,11 +16,12 @@ class GeminiController extends Controller
     
     public function entry(Request $request)
     {
-        $toGeminiCommand = "# やって欲しいこと\n次のテキストを基に日報を作成してください。\n# 日報には、次の内容を含めてください。\n- 実施したことを箇条書き\n- やったことに対する所感をポジティブな内容で文章にして書いてください。改行も入れてください。\n- やったことに対して次にとるべき行動を文章で書いてください\n```\n" . $request->toGeminiText . "\n```";
+        $toGeminiCommand = "# やって欲しいこと\n次のテキストは今日やったことなので、そのテキストを基に日報を作成してください。\n# 日報に入れてほしいこと\n- PDCAを用いた計画に対して実行した内容を数値化して書いてください。\n- 更に、次にとるべき行動をPDCAを用いて書いてください。\n- 最後に、ポジティブな所感を入れてください。\n```\n" . $request->toGeminiText . "\n```";
         // dd($toGeminiCommand);
 
         $result = [
-            'task' => $request->toGeminiText,
+            'text' => $request->toGeminiText,
+            'command' => Str::replace("\n", "<br>", $toGeminiCommand),
             'content' => Str::markdown(Gemini::geminiPro()->generateContent($toGeminiCommand)->text()),
         ];
         // dd($result);
