@@ -53,7 +53,7 @@
         @endisset
         <hr class="mt-5 border-blue-300 border-2 rounded">
         <footer class="flex justify-center">
-            <a href="https://portfolio.daianaka.live" class="my-3 text-blue-900 text-sm">&copy;2024 DaiNaka</a>
+            <a href="https://portfolio.dainaka.live" target="_blank" class="my-3 text-blue-900 text-sm">&copy; 2024 DaiNaka</a>
         </footer>
     </div>
 </body>
